@@ -12,24 +12,24 @@ import java.util.Map;
 public class Manager {
 
     private Long taskMaxId = 0L;
-    private final Map<Long, Epic> epics = new HashMap<>(); // Создаю мап для эпиков: ключ(id), значение(эпик)
+    private final Map<Long, Epic> epics = new HashMap<>();
     private final Map<Long, Task> tasks = new HashMap<>();
     private final Map<Long, SubTask> subTasks = new HashMap<>();
 
-    public List<Epic> getAllEpic() { //получаю все значения эпика в формате листа
+    public List<Epic> getAllEpic() {
         return (List<Epic>) epics.values();
     }
 
-    public void clearEpic() { //удаляю все сабтаски и эпики
+    public void clearEpic() {
         clearSubtask();
         epics.clear();
     }
 
-    public Epic getEpicById(Long id) { // возвращаю значение ключа эпика
+    public Epic getEpicById(Long id) {
         return epics.get(id);
     }
 
-    public Epic addEpic(Epic epic) { //добавлению новый эпик в мапу и возвращаю добавленный эпик
+    public Epic addEpic(Epic epic) {
         epic.setId(taskMaxId++);
         if (epic != null && !epics.containsKey(epic.getId())) {
             epics.put(epic.getId(), epic);
@@ -38,7 +38,7 @@ public class Manager {
     }
 
     public void updateEpic(Epic epic) {
-        if (epics.containsKey(epic.getId())) { // проверят наличие эпика в мапе и если он есть, обноваляет его
+        if (epics.containsKey(epic.getId())) {
             epics.put(epic.getId(), epic);
         }
     }
@@ -50,11 +50,11 @@ public class Manager {
         return epics.remove(id);
     }
 
-    public List<SubTask> getAllSubTask() { // получаю все значения сабтаска в формате листа
+    public List<SubTask> getAllSubTask() {
         return (List<SubTask>) subTasks.values();
     }
 
-    public void clearSubtask() { // очищаю все сабтаски
+    public void clearSubtask() {
         for (Epic epic : epics.values()) {
             epic.getSubTaskList().clear();
             epic.setStatus(TaskStatus.NEW);
@@ -62,12 +62,12 @@ public class Manager {
         subTasks.clear();
     }
 
-    public SubTask getSubTaskById(Long id) { //возвращаю значение ключа сабтаска
+    public SubTask getSubTaskById(Long id) {
         return subTasks.get(id);
     }
 
     public SubTask addSubTask(SubTask subTask) {
-        subTask.setId(taskMaxId++);//добавлению новый сабтаск в мапу и возвращаю добавленный сабтаск
+        subTask.setId(taskMaxId++);
         if (subTask != null && !subTasks.containsKey(subTask.getId())) {
             subTasks.put(subTask.getId(), subTask);
         }
@@ -78,7 +78,7 @@ public class Manager {
         SubTask subTask = subTasks.get(id);
         Epic epic = subTask.getEpic();
         if (epic.getSubTaskList().size() == 1) {
-            epic.setStatus(TaskStatus.DONE); //если закончились сабтаски, значит эпик готов
+            epic.setStatus(TaskStatus.DONE);
         }
         epic.getSubTaskList().remove(subTask);
         return subTasks.remove(id);
@@ -116,7 +116,7 @@ public class Manager {
     }
 
     public Task addTask(Task task) {
-        task.setId(taskMaxId++);//добавлению новый сабтаск в мапу и возвращаю добавленный сабтаск
+        task.setId(taskMaxId++);
         if (task != null && !tasks.containsKey(task.getId())) {
             tasks.put(task.getId(), task);
         }

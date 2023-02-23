@@ -39,6 +39,5 @@ public class Main {
         System.out.println(manager.getTaskById(7L));
         manager.updateTask(task44);
         Task task2 = manager.addTask(new Task("Тест2", "Добавляем второй тест", TaskStatus.NEW));
-        //  System.out.println(manager.getTaskById());
     }
 }
