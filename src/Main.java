@@ -1,43 +1,50 @@
-
 import manager.Manager;
-import model.Epic;
-import model.SubTask;
-import model.Task;
-import model.TaskStatus;
+import task.Epic;
+import task.Subtask;
+import task.Task;
+
+import static task.Task.DONE_STATUS;
+import static task.Task.IN_PROGRESS_STATUS;
+
 
 public class Main {
     public static void main(String[] args) {
         Manager manager = new Manager();
+        Task task1 = manager.createTask("Купить хлеб", "Выбрать в яндекс лавке");
+        Task task2 = manager.createTask("Купить огурцы", "Зайти в овощной отдел");
+        Epic epic1 = manager.createEpic("Приготовить покушать", "Купить продукты");
+        Subtask subtask = manager.createSubtask(epic1.getId(), "Заказать рис", "Рис Басмати");
+        Epic epic2 = manager.createEpic("Убраться в квартире", "Успеть сделать все до четверга");
+        Subtask subtask1 = manager.createSubtask(epic2.getId(), "Помыть посуду", "Использовать губку");
+        Subtask subtask2 = manager.createSubtask(epic2.getId(), "Протереть пол", "Использовать швабру");
 
-        Task task1 = manager.addTask(new Task("Тест1", "Добавляем первый тест", TaskStatus.NEW));
+        System.out.println(task1.toString());
+        System.out.println(task2.toString());
+        System.out.println(epic1.toString());
+        System.out.println(subtask.toString());
+        System.out.println(epic2.toString());
+        System.out.println(subtask1.toString());
+        System.out.println(subtask2.toString());
 
-        Task task44 = new Task("Тест44", "Тест44", TaskStatus.IN_PROGRESS);
+        task1.setStatus(IN_PROGRESS_STATUS);
+        manager.updateTask(task1);
+        System.out.println(task1.toString());
 
-        Epic epic1 = manager.addEpic(new Epic("Эпик1", "Добавляем тест1 эпик"));
-        Epic epic2 = manager.addEpic(new Epic("Эпик2", "Добавляем тест2 эпик"));
+        task2.setStatus(DONE_STATUS);
+        manager.updateTask(task2);
+        System.out.println(task2.toString());
 
-        System.out.println(epic2.getId());
+        manager.changeSubtaskStatus(epic1.getId(), subtask.getId(), IN_PROGRESS_STATUS);
+        System.out.println(epic1.toString());
 
-        SubTask subTask1 = manager.addSubTask(new SubTask("subtask", "text subtask2", TaskStatus.NEW));
-        SubTask subTask2 = manager.addSubTask(new SubTask("subtask", "text subtask2", TaskStatus.NEW));
-        SubTask subTask3 = manager.addSubTask(new SubTask("subtask", "text subtask2", TaskStatus.NEW));
+        manager.changeSubtaskStatus(epic2.getId(), subtask1.getId(), DONE_STATUS);
+        manager.changeSubtaskStatus(epic2.getId(), subtask2.getId(), IN_PROGRESS_STATUS);
+        System.out.println(epic2.toString());
 
-        epic1.getSubTaskList().add(subTask1);
-        epic1.getSubTaskList().add(subTask2);
+        manager.removeIdEpic(epic1.getId());
+        manager.removeIdTask(task1.getId());
 
-        epic2.getSubTaskList().add(subTask3);
-
-        subTask1.setEpic(epic1);
-        subTask2.setEpic(epic2);
-
-        Task task3 = manager.addTask(new Task("Тест23", "Тест апдейта 1", TaskStatus.NEW));
-
-        task3.setName("raz");
-
-        manager.updateTask(task3);
-
-        System.out.println(manager.getTaskById(7L));
-        manager.updateTask(task44);
-        Task task2 = manager.addTask(new Task("Тест2", "Добавляем второй тест", TaskStatus.NEW));
+        System.out.println(manager.getEpics());
+        System.out.println(manager.getTasks());
     }
 }
