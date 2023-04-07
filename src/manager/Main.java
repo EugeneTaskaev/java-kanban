@@ -1,11 +1,11 @@
 package manager;
-import manager.Manager;
+
 import task.Epic;
 import task.StatusTrecker;
 import task.Subtask;
 import task.Task;
+
 import java.util.ArrayList;
-import task.StatusTrecker.*;
 
 import static task.StatusTrecker.NEW;
 
@@ -149,10 +149,10 @@ public class Main {
         System.out.println("Проверка обновления статуса и удаления подзадач.");
         Subtask subtask5 = new Subtask("Подзадача 5", "Описание", 3, 2);
         Subtask subtask6 = new Subtask("Подзадача 6", "Описание", 4, 2);
-        subtask5.setStatus(DONE);
-        subtask6.setStatus(DONE);
-        manager.updateSubTaskByID(subTask5);
-        manager.updateSubTaskByID(subTask6);
+        subtask5.setStatus(StatusTrecker.DONE);
+        subtask6.setStatus(StatusTrecker.DONE);
+        manager.updateSubTaskByID(subtask5);
+        manager.updateSubTaskByID(subtask6);
         System.out.println(listEpics);
         System.out.println(manager.findEpicById(2));
         System.out.println(manager.findAllSubTasksOfEpic(manager.findEpicById(2)));

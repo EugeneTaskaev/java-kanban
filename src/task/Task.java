@@ -1,15 +1,27 @@
 package task;
+import java.util.Objects;
+import static task.StatusTrecker.NEW;
 
+// Класс Task описывает сущность задачи типа "задача"
 public class Task {
+    protected String name;
+    protected String description;
+    protected Integer id;
+    protected String status;
 
-    public static final String NEW_STATUS = "NEW";
-    public static final String IN_PROGRESS_STATUS = "IN_PROGRESS";
-    public static final String DONE_STATUS = "DONE";
+    public Task(String name, String description, Integer id) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.status = NEW;
+    }
 
-    private String name;
-    private String description;
-    private int id;
-    private String status;
+    public Task(String name, String description, Integer id, String status) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.status = status;
+    }
 
     public String getName() {
         return name;
@@ -27,12 +39,8 @@ public class Task {
         this.description = description;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getStatus() {
@@ -44,6 +52,22 @@ public class Task {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task task = (Task) o;
+        return Objects.equals(getName(), task.getName())
+                && Objects.equals(getDescription(), task.getDescription())
+                && Objects.equals(getId(), task.getId())
+                && Objects.equals(getStatus(), task.getStatus());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getDescription(), getId(), getStatus());
+    }
+
+    @Override
     public String toString() {
         return "Task{" +
                 "name='" + name + '\'' +
@@ -52,4 +76,6 @@ public class Task {
                 ", status='" + status + '\'' +
                 '}';
     }
+
+
 }
