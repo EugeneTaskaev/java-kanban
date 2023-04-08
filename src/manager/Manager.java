@@ -3,17 +3,14 @@ package manager;
 import task.Epic;
 import task.Subtask;
 import task.Task;
-import manager.TaskManager;
-import manager.SubtaskManager;
-import manager.EpicManager;
 
 import java.util.ArrayList;
 
 public class Manager {
 
-    TaskManager taskManager = new TaskManager();
-    EpicManager epicManager = new EpicManager();
-    SubtaskManager subTaskManager = new SubtaskManager(epicManager);
+    private  TaskManager taskManager = new TaskManager();
+    private  EpicManager epicManager = new EpicManager();
+    private SubtaskManager subTaskManager = new SubtaskManager(epicManager);
 
 
     //    Получение списка всех задач.

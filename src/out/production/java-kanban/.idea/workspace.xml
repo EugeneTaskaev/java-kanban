@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd29a406-1507-42c1-adbf-ee2d8f62162a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/manager/EpicManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manager/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manager/SubtaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manager/TaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/TaskStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task/StatusTrecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-kanban.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-kanban/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-kanban/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-kanban/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Epic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Subtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/reviewer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/TaskStatus.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
