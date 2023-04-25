@@ -39,8 +39,8 @@ public class Task {
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getId() {
+        return Long.valueOf(id);
     }
 
     public String getStatus() {
@@ -77,5 +77,6 @@ public class Task {
                 '}';
     }
 
-
+    public void setId(Long aLong) {
+    }
 }

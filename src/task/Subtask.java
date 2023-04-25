@@ -2,13 +2,14 @@ package task;
 import java.util.Objects;
 
 public class Subtask extends Task {
-    protected Integer epicID;
-    public Subtask(String name, String description, Integer id, Integer epicID) {
+    protected int epicID;
+    public Subtask(String name, String description, Integer id, int epicID) {
         super(name, description, id);
         this.epicID = epicID;
     }
-    public Integer getEpicID() {
+    public Epic getEpicID() {
         return epicID;
+        // Подскажите как исправить эту проблему когда меняю Epic выдает ошибку InMemoryTaskManager как исправлю там ошибку выдает ошибку тут или в мейне.
     }
 
     @Override
@@ -35,7 +36,7 @@ public class Subtask extends Task {
                 '}';
     }
 
-    public void setEpicID(Integer epicID) {
+    public void setEpicID(Epic epicID) {
         this.epicID = epicID;
     }
 }

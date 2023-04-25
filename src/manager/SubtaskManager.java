@@ -50,9 +50,9 @@ public class SubtaskManager {
 
     // Создать подзадачу.
     public Subtask create(Subtask subtask, Epic epic) {
-        final Subtask newSubTask = new Subtask(subtask.getName(), subtask.getDescription(), ++counterIDSubTasks, epic.getId());
+        final Subtask newSubTask = new Subtask(subtask.getName(), subtask.getDescription(), ++counterIDSubTasks, Math.toIntExact(epic.getId()));
         if (!subTasks.containsKey(newSubTask.getId())) {
-            subTasks.put(newSubTask.getId(), newSubTask);
+            subTasks.put(Math.toIntExact(newSubTask.getId()), newSubTask);
             epicManager.epics.get(epic.getId()).getSubTasks().add(/*newSubTask.getId(),*/ newSubTask);
         } else {
             System.out.println("Задача с таким ID уже существует");

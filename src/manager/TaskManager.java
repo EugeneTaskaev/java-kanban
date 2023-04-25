@@ -27,7 +27,7 @@ public class TaskManager {
     public Task create(Task task) {
         final Task newTask = new Task(task.getName(), task.getDescription(), ++counterIDTasks);
         if (!tasks.containsKey(newTask.getId()))
-            tasks.put(newTask.getId(), newTask);
+            tasks.put(Math.toIntExact(newTask.getId()), newTask);
         else {
             System.out.println("Задача с таким ID уже существует");
             return null;
@@ -54,3 +54,4 @@ public class TaskManager {
         return deletedTask;
     }
 }
+
