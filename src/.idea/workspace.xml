@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd29a406-1507-42c1-adbf-ee2d8f62162a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/service/HistoryManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/InMemoryHistoryManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/InMemoryTaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/TaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task/TaskStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utility/UtilityManagers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/EpicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/EpicManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/SubtaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/SubtaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java-kanban/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java-kanban/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Epic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/InMemoryTaskManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Subtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Task.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +40,9 @@
         <option name="url" value="https://github.com/EugeneTaskaev/java-kanban.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Amazon Corretto/jdk11.0.17_8/lib/src.zip!/java.base/java/lang/Math.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

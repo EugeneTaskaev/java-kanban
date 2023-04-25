@@ -7,7 +7,7 @@ public class Subtask extends Task {
         super(name, description, id);
         this.epicID = epicID;
     }
-    public Epic getEpicID() {
+    public int getEpicID() {
         return epicID;
         // Подскажите как исправить эту проблему когда меняю Epic выдает ошибку InMemoryTaskManager как исправлю там ошибку выдает ошибку тут или в мейне.
     }
@@ -36,7 +36,7 @@ public class Subtask extends Task {
                 '}';
     }
 
-    public void setEpicID(Epic epicID) {
+    public void setEpicID(int epicID) {
         this.epicID = epicID;
     }
 }

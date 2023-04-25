@@ -91,11 +91,11 @@ public class InMemoryTaskManager implements TaskManager {
         }
         return subTask;
     }
-
+// Подскажите как исправить даную ошибку!
     @Override
     public Subtask removeSubTaskById(Long id) {
         Subtask subTask = subTasks.get(id);
-        Epic epic = subTask.getEpicID();
+        int epic = subTask.getEpicID();
         if (epic.getSubTasks().size() == 1) {
             epic.setStatus(String.valueOf(TaskStatus.DONE)); //если закончились сабтаски, значит эпик готов
         }
@@ -105,14 +105,13 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Subtask updateSubTask(Subtask subTask) {
-        Epic epic = subTask.getEpicID();
+        int epic = subTask.getEpicID();
         boolean isDone = false;
-        for (Subtask subTask1 : epic.getSubTasks()) {
+        for (Subtask subTask1 : epic.getSubTasks())
             if (!subTask1.getStatus().equals(TaskStatus.DONE)) {
                 isDone = true;
                 break;
             }
-        }
         if (!isDone && subTask.getStatus().equals(TaskStatus.DONE)) {
             updateStatusEpic(epic, TaskStatus.DONE);
         }
