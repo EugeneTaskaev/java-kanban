@@ -1,93 +1,90 @@
 package manager;
 
-import java.util.*;
-
 import task.Task;
 
-public class InMemoryHistoryManager implements HistoryManager {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
-    private final Map<Integer, Node> table = new HashMap<>();
+public class InMemoryHistoryManager implements HistoryManager {
+    static class Node {
+        Task task;
+        Node prev;
+        Node next;
+
+        public Node(Task task) {
+            this.task = task;
+        }
+    }
+
     private Node head;
     private Node tail;
 
-    private void linkLast(Task task) {
-        Node element = new Node();
-        element.setTask(task);
-        if (table.containsKey(task.getId())) {
-            removeNode(table.get(task.getId()));
-        }
-        if (head == null) {
-            tail = element;
-            head = element;
-            element.setNext(null);
-            element.setPrev(null);
-        } else {
-            element.setPrev(tail);
-            element.setNext(null);
-            tail.setNext(element);
-            tail = element;
-        }
-        table.put(task.getId(), element);
+    private HashMap<Integer, Node> map = new HashMap<>();
+
+    public HashMap<Integer, Node> getMap() {
+        return map;
     }
 
-    private List<Task> getTasks() {
-        List<Task> result = new ArrayList<>();
-        Node element = head;
-        while (element != null) {
-            result.add(element.getTask());
-            element = element.getNext();
-        }
-        return result;
-    }
+    @Override
+    public void add(Optional<? extends Task> optionalTask) {
 
-    private void removeNode(Node node) {
-        if (node != null) {
-            table.remove(node.getTask().getId());
-            Node prev = node.getPrev();
-            Node next = node.getNext();
-            if (head == node) {
-                head = node.getNext();
-            }
-            if (tail == node) {
-                tail = node.getPrev();
-            }
-            if (prev != null) {
-                prev.setNext(next);
-            }
-            if (next != null) {
-                next.setPrev(prev);
-            }
-        }
-    }
-
-    private Node getNode(int id) {
-        return table.get(id);
     }
 
     @Override
     public void add(Task task) {
-        if (table.containsKey(task.getId())) {
-            removeNode(table.get(task.getId()));
+        if (task == null) {
+            return;
         }
-        Node element = new Node();
-        element.setTask(task);
-        linkLast(element.getTask());
-        table.put(task.getId(), element);
+        linkLast(task);
+    }
+
+    private void linkLast(Task task) {
+        remove(task.getId());
+
+        final Node newNode = new Node(task);
+        if (head == null) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+        }
+        tail = newNode;
+        map.put(task.getId(), newNode);
     }
 
     @Override
     public void remove(int id) {
-        removeNode(getNode(id));
+        final Node oldNode = map.remove(id);
+        if (oldNode != null) {
+            if (oldNode == head) {
+                head = oldNode.next;
+                tail = oldNode.next;
+            } else if (oldNode == tail) {
+                tail = oldNode.prev;
+                tail.next = null;
+            } else {
+                oldNode.prev.next = oldNode.next;
+            }
+        }
+    }
+
+    @Override
+    public void removeAll() {
+        /*Node */head = null;
+        /*Node */tail = null;
+        /*HashMap<Integer, Node> */map = new HashMap<>();
     }
 
     @Override
     public List<Task> getHistory() {
-        return getTasks();
-    }
-
-    @Override
-    public void remove(Node node) {
-
+        final ArrayList<Task> tasks = new ArrayList<>();
+        Node current = head;
+        while (current != null) {
+            tasks.add(current.task);
+            current = current.next;
+        }
+        return tasks;
     }
 }
-
