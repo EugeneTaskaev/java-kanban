@@ -1,42 +1,61 @@
 package task;
-import java.util.Objects;
 
+/**
+ * Сущность подзадачи.
+ */
 public class Subtask extends Task {
-    protected int epicID;
-    public Subtask(String name, String description, Integer id, int epicID) {
-        super(name, description, id);
-        this.epicID = epicID;
-    }
-    public int getEpicID() {
-        return epicID;
-        // Подскажите как исправить эту проблему когда меняю Epic выдает ошибку InMemoryTaskManager как исправлю там ошибку выдает ошибку тут или в мейне.
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Subtask)) return false;
-        if (!super.equals(o)) return false;
-        Subtask subtask = (Subtask) o;
-        return Objects.equals(getEpicID(), subtask.getEpicID());
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), getEpicID());
+    /*
+     * Идентификатор связного эпика.
+     */
+    private Integer epicId;
+
+    public Integer getEpicId() {
+        return epicId;
     }
 
     @Override
     public String toString() {
         return "SubTask{" +
-                "epicID=" + epicID +
+                "epicId=" + epicId +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", id=" + id +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 '}';
     }
 
-    public void setEpicID(int epicID) {
-        this.epicID = epicID;
+    public static class SubtaskBuilder {
+        private final Subtask newSubtask;
+
+        public SubtaskBuilder() {
+            this.newSubtask = new Subtask();
+            this.newSubtask.status = TaskStatus.NEW;
+        }
+
+        public SubtaskBuilder withId(Integer id) {
+            newSubtask.id = id;
+            return this;
+        }
+
+        public SubtaskBuilder withName(String name) {
+            newSubtask.name = name;
+            return this;
+        }
+        public SubtaskBuilder withDescription(String description) {
+            newSubtask.description = description;
+            return this;
+        }
+
+        public SubtaskBuilder withEpicId(Integer epicId) {
+            newSubtask.epicId = epicId;
+            return this;
+        }
+
+        public Subtask build() {
+            return newSubtask;
+        }
+
     }
+
 }

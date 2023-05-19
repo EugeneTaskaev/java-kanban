@@ -1,26 +1,33 @@
 package task;
-import java.util.Objects;
-import static task.StatusTrecker.NEW;
-
-// Класс Task описывает сущность задачи типа "задача"
+import task.TaskStatus;
+/**
+ * Сущность задачи.
+ */
 public class Task {
-    protected String name;
-    protected String description;
+
+    /*
+     * Идентификатор задачи.
+     */
     protected Integer id;
-    protected String status;
 
-    public Task(String name, String description, Integer id) {
-        this.name = name;
-        this.description = description;
-        this.id = id;
-        this.status = NEW;
-    }
+    /*
+     * Наименование задачи.
+     */
+    protected String name;
 
-    public Task(String name, String description, Integer id, String status) {
-        this.name = name;
-        this.description = description;
-        this.id = id;
-        this.status = status;
+    /*
+     * Описание задачи.
+     */
+    protected String description;
+
+    /*
+     * Статус задачи.
+     */
+    protected task.TaskStatus status;
+
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -39,44 +46,51 @@ public class Task {
         this.description = description;
     }
 
-    public Long getId() {
-        return Long.valueOf(id);
-    }
-
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Task)) return false;
-        Task task = (Task) o;
-        return Objects.equals(getName(), task.getName())
-                && Objects.equals(getDescription(), task.getDescription())
-                && Objects.equals(getId(), task.getId())
-                && Objects.equals(getStatus(), task.getStatus());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getId(), getStatus());
-    }
 
     @Override
     public String toString() {
         return "Task{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", id=" + id +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 '}';
     }
 
-    public void setId(Long aLong) {
+    public static class TaskBuilder {
+        private final Task newTask;
+
+        public TaskBuilder() {
+            this.newTask = new Task();
+            this.newTask.status = TaskStatus.NEW;
+        }
+
+        public TaskBuilder withId(Integer id) {
+            newTask.id = id;
+            return this;
+        }
+
+        public TaskBuilder withName(String name) {
+            newTask.name = name;
+            return this;
+        }
+        public TaskBuilder withDescription(String description) {
+            newTask.description = description;
+            return this;
+        }
+
+        public Task build() {
+            return newTask;
+        }
+
     }
+
 }

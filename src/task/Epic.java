@@ -1,41 +1,70 @@
 package task;
+
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
+import task.Task;
+import task.TaskStatus;
+
+/**
+ * Сущность эпик.
+ */
 public class Epic extends Task {
-    protected ArrayList<Subtask> subTasks = new ArrayList<>();
 
-    public Epic(String name, String description, Integer id) {
-        super(name, description, id);
+    /*
+     * Список подзадач относящихся к эпику.
+     */
+    private final List<Integer> subtaskIdsList = new ArrayList<>();
+
+    public List<Integer> getSubtaskIdsList() {
+        return subtaskIdsList;
     }
 
-    public ArrayList<Subtask> getSubTasks() {
-
-        return subTasks;
+    public void addSubTaskId(Integer subtaskId) {
+        subtaskIdsList.add(subtaskId);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Epic epic = (Epic) o;
-        return Objects.equals(subTasks, epic.subTasks);
+    public void removeSubtaskId(Integer subtaskId) {
+        subtaskIdsList.remove(subtaskId);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), subTasks);
+    public static class EpicBuilder {
+        private final Epic newEpic;
+
+        public EpicBuilder() {
+            this.newEpic = new Epic();
+            this.newEpic.status = TaskStatus.NEW;
+        }
+
+        public EpicBuilder withId(Integer id) {
+            newEpic.id = id;
+            return this;
+        }
+
+        public EpicBuilder withName(String name) {
+            newEpic.name = name;
+            return this;
+        }
+        public EpicBuilder withDescription(String description) {
+            newEpic.description = description;
+            return this;
+        }
+
+        public Epic build() {
+            return newEpic;
+        }
+
     }
 
     @Override
     public String toString() {
         return "Epic{" +
-                "subTasks=" + subTasks +
+                "subtaskIdsList=" + subtaskIdsList +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", id=" + id +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 '}';
     }
+
 }

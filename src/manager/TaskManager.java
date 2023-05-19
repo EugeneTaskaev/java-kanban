@@ -1,57 +1,71 @@
 package manager;
+
+import java.util.List;
+import java.util.Set;
+
+import task.Epic;
 import task.Task;
-import java.util.ArrayList;
-import java.util.HashMap;
+import task.Subtask;
+import task.Task;
 
+public interface TaskManager{
 
-public class TaskManager {
-    protected HashMap<Integer, Task> tasks = new HashMap<>();
-    protected Integer counterIDTasks = 0;
+    List<Task> getHistory();
 
-    // Получение списка всех задач
-    public ArrayList<Task> findAll() {
-        return new ArrayList<>(tasks.values());
-    }
+    void remove(int id);
 
-    // Удаление всех задач.
-    public void deleteAll() {
-        tasks.clear();
-    }
+    List<Task> getAllTasks(Node delNode);
 
-    // Получение задачи по ID
-    public Task findById(Integer id) {
-        return tasks.get(id);
-    }
+    Task getTask(Integer id);
 
-    //    Создание новой задачи
-    public Task create(Task task) {
-        final Task newTask = new Task(task.getName(), task.getDescription(), ++counterIDTasks);
-        if (!tasks.containsKey(newTask.getId()))
-            tasks.put(Math.toIntExact(newTask.getId()), newTask);
-        else {
-            System.out.println("Задача с таким ID уже существует");
-            return null;
-        }
-        return newTask;
-    }
-    // Обновление задачи по ID
-    public Task updateTask(Task task) {
-        final Task originalTask = tasks.get(task.getId());
-        if (originalTask == null) {
-            System.out.println("Задачи с таким ID не существует.");
-            return null;
-        }
-        originalTask.setDescription(task.getDescription());
-        originalTask.setName(task.getName());
-        originalTask.setStatus(task.getStatus());
-        return originalTask;
-    }
+    void removeAllTasks(List<Task> delNode);
 
-    // Удаление задачи по идентификатору.
-    public Task deleteById(Integer id) {
-        final Task deletedTask = tasks.get(id);
-        tasks.remove(id);
-        return deletedTask;
-    }
+    // Удаление подзадач по ID.
+    void removeAllSubtasksId(Integer id);
+
+    // Удаление эпика по ID.
+    void removeAllEpicsId(Integer id);
+
+    // Удаление задачи по ID.
+    abstract void removeTaskById(Integer id);
+
+    void createTask(Task task);
+
+    void updateTask(Task task);
+
+    List<Subtask> getAllSubtasks();
+
+    Subtask getSubtask(Integer id);
+
+    void removeAllSubtasks();
+
+    void removeSubtaskById(Integer id);
+
+    void createSubtask(Subtask subtask);
+
+    void updateSubtask(Subtask subtask);
+
+    List<Epic> getAllEpics();
+
+    Epic getEpic(Integer id);
+
+    // Удаление всех подзадач.
+    void removeAllTasks();
+
+    void removeAllEpics();
+
+    void removeEpicById(Integer id);
+
+    void createEpic(Epic epic);
+
+    void updateEpic(Epic epic);
+
+    List<Subtask> getSubtaskOfEpic(Epic epic);
+
+    Integer generateId();
+
+    Set<Task> getPrioritizedTasks();
+
+    // Удаление всей истории.
+    void removeFromHistory();
 }
-
