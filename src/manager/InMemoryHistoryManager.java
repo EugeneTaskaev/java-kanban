@@ -26,7 +26,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     public HashMap<Integer, Node> getMap() {
         return map;
     }
-
     @Override
     public void add(Task task) {
         if (task == null) {
@@ -64,14 +63,6 @@ public class InMemoryHistoryManager implements HistoryManager {
             }
         }
     }
-
-    @Override
-    public void removeAll() {
-        /*Node */head = null;
-        /*Node */tail = null;
-        /*HashMap<Integer, Node> */map = new HashMap<>();
-    }
-
     @Override
     public List<Task> getHistory() {
         final ArrayList<Task> tasks = new ArrayList<>();
@@ -83,3 +74,4 @@ public class InMemoryHistoryManager implements HistoryManager {
         return tasks;
     }
 }
+
