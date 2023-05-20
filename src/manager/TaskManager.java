@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 import task.Epic;
-import task.Task;
 import task.Subtask;
 import task.Task;
 
@@ -14,20 +13,17 @@ public interface TaskManager{
 
     void remove(int id);
 
+    List<Task> getAllTasks();
+
+    Set<Task> getPrioritizedTasks();
+
     List<Task> getAllTasks(Node delNode);
 
     Task getTask(Integer id);
 
-    void removeAllTasks(List<Task> delNode);
+    void removeAllTasks();
 
-    // Удаление подзадач по ID.
-    void removeAllSubtasksId(Integer id);
-
-    // Удаление эпика по ID.
-    void removeAllEpicsId(Integer id);
-
-    // Удаление задачи по ID.
-    abstract void removeTaskById(Integer id);
+    void removeTaskById(Integer id);
 
     void createTask(Task task);
 
@@ -49,9 +45,6 @@ public interface TaskManager{
 
     Epic getEpic(Integer id);
 
-    // Удаление всех подзадач.
-    void removeAllTasks();
-
     void removeAllEpics();
 
     void removeEpicById(Integer id);
@@ -64,7 +57,11 @@ public interface TaskManager{
 
     Integer generateId();
 
-    Set<Task> getPrioritizedTasks();
+    // Удаление подзадач по ID.
+    void removeAllSubtasksId(Integer id);
+
+    // Удаление эпика по ID.
+    void removeAllEpicsId(Integer id);
 
     // Удаление всей истории.
     void removeFromHistory();

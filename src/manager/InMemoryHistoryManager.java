@@ -28,11 +28,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     @Override
-    public void add(Optional<? extends Task> optionalTask) {
-
-    }
-
-    @Override
     public void add(Task task) {
         if (task == null) {
             return;

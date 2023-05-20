@@ -1,5 +1,5 @@
 package task;
-import task.TaskStatus;
+
 /**
  * Сущность задачи.
  */
@@ -23,7 +23,7 @@ public class Task {
     /*
      * Статус задачи.
      */
-    protected task.TaskStatus status;
+    protected TaskStatus status;
 
 
     public int getId() {
