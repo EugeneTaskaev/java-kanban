@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59a8b6d8-fd02-4fec-b80c-657a11b65858" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/java-kanban.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/out/production/java-kanban/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/out/production/java-kanban/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/out/production/java-kanban/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/out/production/java-kanban/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/out/production/java-kanban/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/java-kanban/out/production/java-kanban/java-kanban.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-kanban.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/HistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/InMemoryHistoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manager/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/Managers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manager/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/manager/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Epic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/Task.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +22,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/77jeb/dev/java-kanban"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
