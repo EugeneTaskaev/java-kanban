@@ -3,14 +3,12 @@ package manager;
 /**
  * Утилитарный класс управления.
  */
-public class Managers {
+public final class Managers {
+        public static TaskManager getInMemoryTaskManager(HistoryManager historyManager) {
+            return new InMemoryTaskManager(historyManager);
+        }
 
-    public static TaskManager getInMemoryTaskManager(HistoryManager defaultHistory) {
-        return new InMemoryTaskManager();
+        public static HistoryManager getDefaultHistory() {
+            return new InMemoryHistoryManager();
+        }
     }
-
-    public static HistoryManager getDefaultHistory() {
-        return new InMemoryHistoryManager();
-    }
-
-}

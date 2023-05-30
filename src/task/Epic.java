@@ -2,66 +2,49 @@ package task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Сущность эпик.
  */
 public class Epic extends Task {
+    private final List<Integer> subtaskIds = new ArrayList<>();
 
-    /*
-     * Список подзадач относящихся к эпику.
-     */
-    private final List<Integer> subtaskIdsList = new ArrayList<>();
-
-    public List<Integer> getSubtaskIdsList() {
-        return subtaskIdsList;
+    public Epic(String description, String name, TaskStatus status) {
+        super(description, name, status);
     }
 
-    public void addSubTaskId(Integer subtaskId) {
-        subtaskIdsList.add(subtaskId);
+    public List<Integer> getSubtaskIds() {
+        return subtaskIds;
     }
 
-    public void removeSubtaskId(Integer subtaskId) {
-        subtaskIdsList.remove(subtaskId);
+    public void setSubtaskIds(int id) {
+        subtaskIds.add(id);
     }
 
-    public static class EpicBuilder {
-        private final Epic newEpic;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Epic epic = (Epic) o;
+        return Objects.equals(subtaskIds, epic.subtaskIds);
+    }
 
-        public EpicBuilder() {
-            this.newEpic = new Epic();
-            this.newEpic.status = TaskStatus.NEW;
-        }
-
-        public EpicBuilder withId(Integer id) {
-            newEpic.id = id;
-            return this;
-        }
-
-        public EpicBuilder withName(String name) {
-            newEpic.name = name;
-            return this;
-        }
-        public EpicBuilder withDescription(String description) {
-            newEpic.description = description;
-            return this;
-        }
-
-        public Epic build() {
-            return newEpic;
-        }
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), subtaskIds);
     }
 
     @Override
     public String toString() {
         return "Epic{" +
-                "subtaskIdsList=" + subtaskIdsList +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
+                "subtaskIds=" + subtaskIds +
+                ", description='" + getDescription() + '\'' +
+                ", id=" + getId() +
+                ", name='" + getName() + '\'' +
+                ", status=" + getStatus() +
                 '}';
     }
-
 }
+

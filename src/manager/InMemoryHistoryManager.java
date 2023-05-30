@@ -2,85 +2,98 @@ package manager;
 
 import task.Task;
 
+
+import java.util.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class InMemoryHistoryManager implements HistoryManager {
-    static class Node {
-        Task task;
-        Node prev;
-        Node next;
+    private static class CustomLinkedList {
+        private final Map<Integer, Node> table = new HashMap<>();
+        private Node head;
+        private Node tail;
 
-        public Node(Task task) {
-            this.task = task;
-        }
-    }
+        private void linkLast(Task task) {
+            Node element = new Node();
+            element.setTask(task);
 
-    private Node head;
-    private Node tail;
+            if (table.containsKey(task.getId())) {
+                removeNode(table.get(task.getId()));
+            }
 
-    private HashMap<Integer, Node> map = new HashMap<>();
-
-    public HashMap<Integer, Node> getMap() {
-        return map;
-    }
-
-
-
-    @Override
-    public void add(Task task) {
-        if (task == null) {
-            return;
-        }
-        linkLast(task);
-    }
-
-    private void linkLast(Task task) {
-        remove(task.getId());
-
-        final Node newNode = new Node(task);
-        if (head == null) {
-            head = newNode;
-        } else {
-            tail.next = newNode;
-            newNode.prev = tail;
-        }
-        tail = newNode;
-        map.put(task.getId(), newNode);
-    }
-
-    @Override
-    public void remove(int id) {
-        final Node oldNode = map.remove(id);
-        if (oldNode != null) {
-            if (oldNode == head) {
-                head = oldNode.next;
-                tail = oldNode.next;
-            } else if (oldNode == tail) {
-                tail = oldNode.prev;
-                tail.next = null;
+            if (head == null) {
+                tail = element;
+                head = element;
+                element.setNext(null);
+                element.setPrev(null);
             } else {
-                oldNode.prev.next = oldNode.next;
+                element.setPrev(tail);
+                element.setNext(null);
+                tail.setNext(element);
+                tail = element;
+            }
+
+            table.put(task.getId(), element);
+        }
+
+        private List<Task> getTasks() {
+            List<Task> result = new ArrayList<>();
+            Node element = head;
+            while (element != null) {
+                result.add(element.getTask());
+                element = element.getNext();
+            }
+            return result;
+        }
+
+        private void removeNode(Node node) {
+            if (node != null) {
+                table.remove(node.getTask().getId());
+                Node prev = node.getPrev();
+                Node next = node.getNext();
+
+                if (head == node) {
+                    head = node.getNext();
+                }
+                if (tail == node) {
+                    tail = node.getPrev();
+                }
+
+                if (prev != null) {
+                    prev.setNext(next);
+                }
+
+                if (next != null) {
+                    next.setPrev(prev);
+                }
             }
         }
+
+        private Node getNode(int id) {
+            return table.get(id);
+        }
     }
 
+    private final CustomLinkedList list = new CustomLinkedList();
+
+    // Добавление нового просмотра задачи в историю
     @Override
-    public void removeAll() {
-        /*Node */head = null;
-        /*Node */tail = null;
-        /*HashMap<Integer, Node> */map = new HashMap<>();
+    public void add(Task task) {
+        list.linkLast(task);
     }
 
+    // Удаление просмотра из истории
+    @Override
+    public void remove(int id) {
+        list.removeNode(list.getNode(id));
+    }
+
+    // Получение истории просмотров
     @Override
     public List<Task> getHistory() {
-        final ArrayList<Task> tasks = new ArrayList<>();
-        Node current = head;
-        while (current != null) {
-            tasks.add(current.task);
-            current = current.next;
-        }
-        return tasks;
+        return list.getTasks();
     }
 }

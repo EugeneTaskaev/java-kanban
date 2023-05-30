@@ -5,17 +5,21 @@ package task;
  */
 public enum TaskStatus {
 
-    /**
-     * Задача создана, но к её выполнению ещё не приступили.
-     */
-    NEW,
-    /**
-     * Над задачей ведётся работа.
-     */
-    IN_PROGRESS,
-    /**
-     * Задача выполнена.
-     */
-    DONE
+    NEW("new"), IN_PROGRESS("inProgress"), DONE("done");
+    private String translation;
 
+    TaskStatus() {
+    }
+
+    TaskStatus(String translation) {
+        this.translation = translation;
+    }
+
+    public String getTranslation() {
+        return translation;
+    }
+
+    public String toString() {
+        return translation;
+    }
 }

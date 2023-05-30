@@ -1,55 +1,78 @@
 package manager;
 
-import java.util.List;
-
 import task.Epic;
 import task.Subtask;
 import task.Task;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface TaskManager{
 
-    List<Task> getHistory();
+    void printTasks();
 
-    void remove(int id);
+    void printEpics();
 
-    List<Task> getAllTasks();
+    void printSubtasks();
 
-    Task getTask(Integer id);
+    List<Task> getHistory(); //получить историю
 
-    void removeAllTasks();
 
-    void removeTaskById(Integer id);
 
-    void createTask(Task task);
+    void remove(int id); //удалять
 
-    void updateTask(Task task);
+    Task getTaskById(int id);
 
-    List<Subtask> getAllSubtasks();
+    int generateId();
 
-    Subtask getSubtask(Integer id);
+    List<Task> getAllTasks(); //получить все задачи
 
-    void removeAllSubtasks();
 
-    void removeSubtaskById(Integer id);
+    void removeTaskById(int id);
 
-    void createSubtask(Subtask subtask);
+    void removeEpicById(int id);
 
-    void updateSubtask(Subtask subtask);
+    void removeSubtaskById(int id);
 
-    List<Epic> getAllEpics();
+    void removeAllTasks(); //удалить все задачи
 
-    Epic getEpic(Integer id);
+    Task removeTaskById(Integer id); //удалить задачу по ид
 
-    void removeAllEpics();
+    int createTask(Task task); //создать задачу
 
-    void removeEpicById(Integer id);
 
-    void createEpic(Epic epic);
+    List<Subtask> getAllSubtasksByEpicId(int id);
 
-    void updateEpic(Epic epic);
+    void updateTask(Task task); //обновить задачу
 
-    List<Subtask> getSubtaskOfEpic(Epic epic);
+    List<Subtask> getAllSubtasks(); //получить все подзадачи
 
-    Integer generateId();
+    Optional<Subtask> getSubtask(Integer id);//получить подзадачу
+
+    Subtask getSubtaskById(int id); // получение подзадачи по id
+
+    void removeAllSubtasks(); //удалить все подзадачи
+
+    void removeSubtaskById(Integer id); //удалить подзадачу по ид
+
+    int createSubtask(Subtask subtask); //создать подзадачу
+
+    void updateStatusEpic(Epic epic);
+
+    void updateSubtask(Subtask subtask); //обновить подзадачу
+
+    List<Epic> getAllEpics(); //получить все эпики
+
+    Epic getEpicById(int id); // получение эпика по id
+
+    void removeAllEpics(); //удалить все эпики
+
+    void removeEpicById(Integer id); //удалить эпик по ид
+
+    int createEpic(Epic epic); //создать эпик
+
+    void updateEpic(Epic epic); //обновить эпик
 
 }
+
+

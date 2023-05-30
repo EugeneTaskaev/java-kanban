@@ -1,33 +1,36 @@
 package task;
 
+import java.util.Objects;
+
 /**
  * Сущность задачи.
  */
 public class Task {
+    private String description;
+    private int id;
+    private String name;
+    private TaskStatus status;
 
-    /*
-     * Идентификатор задачи.
-     */
-    protected Integer id;
+    public Task(String description, String name, TaskStatus status) {
+        this.description = description;
+        this.name = name;
+        this.status = status;
+}
 
-    /*
-     * Наименование задачи.
-     */
-    protected String name;
+    public String getDescription() {
+        return description;
+    }
 
-    /*
-     * Описание задачи.
-     */
-    protected String description;
-
-    /*
-     * Статус задачи.
-     */
-    protected TaskStatus status;
-
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -38,14 +41,6 @@ public class Task {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public TaskStatus getStatus() {
         return status;
     }
@@ -54,43 +49,27 @@ public class Task {
         this.status = status;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id && Objects.equals(description, task.description) && Objects.equals(name, task.name)
+                && status == task.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, id, name, status);
+    }
 
     @Override
     public String toString() {
         return "Task{" +
-                "id=" + id +
+                "description='" + description + '\'' +
+                ", id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 ", status=" + status +
                 '}';
     }
-
-    public static class TaskBuilder {
-        private final Task newTask;
-
-        public TaskBuilder() {
-            this.newTask = new Task();
-            this.newTask.status = TaskStatus.NEW;
-        }
-
-        public TaskBuilder withId(Integer id) {
-            newTask.id = id;
-            return this;
-        }
-
-        public TaskBuilder withName(String name) {
-            newTask.name = name;
-            return this;
-        }
-        public TaskBuilder withDescription(String description) {
-            newTask.description = description;
-            return this;
-        }
-
-        public Task build() {
-            return newTask;
-        }
-
-    }
-
 }

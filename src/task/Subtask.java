@@ -1,61 +1,44 @@
 package task;
 
+import java.util.Objects;
+
 /**
  * Сущность подзадачи.
  */
 public class Subtask extends Task {
+    private final int epicId;
 
-    /*
-     * Идентификатор связного эпика.
-     */
-    private Integer epicId;
+    public Subtask(String description, String name, TaskStatus status, int epicId) {
+        super(description, name, status);
+        this.epicId = epicId;
+    }
 
-    public Integer getEpicId() {
+    public int getEpicId() {
         return epicId;
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Subtask subtask = (Subtask) o;
+        return epicId == subtask.epicId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), epicId);
+    }
+
+    @Override
     public String toString() {
-        return "SubTask{" +
-                "epicId=" + epicId +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
+        return "Subtask{" +
+                "epicId=" + getEpicId() +
+                ", description='" + getDescription() + '\'' +
+                ", id=" + getId() +
+                ", name='" + getName() + '\'' +
+                ", status=" + getStatus() +
                 '}';
     }
-
-    public static class SubtaskBuilder {
-        private final Subtask newSubtask;
-
-        public SubtaskBuilder() {
-            this.newSubtask = new Subtask();
-            this.newSubtask.status = TaskStatus.NEW;
-        }
-
-        public SubtaskBuilder withId(Integer id) {
-            newSubtask.id = id;
-            return this;
-        }
-
-        public SubtaskBuilder withName(String name) {
-            newSubtask.name = name;
-            return this;
-        }
-        public SubtaskBuilder withDescription(String description) {
-            newSubtask.description = description;
-            return this;
-        }
-
-        public SubtaskBuilder withEpicId(Integer epicId) {
-            newSubtask.epicId = epicId;
-            return this;
-        }
-
-        public Subtask build() {
-            return newSubtask;
-        }
-
-    }
-
 }
