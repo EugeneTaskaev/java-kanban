@@ -1,0 +1,7 @@
+id,type,name,status,description,epic
+1,TASK,Космолифт,new,Разработать лифт до луны,
+2,TASK,Tinder,new,Познакомиться,
+3,EPIC,Дерево,new,Посадить дерево,
+4,SUBTASK,Семена,new,Купить семена,3
+
+1,2
